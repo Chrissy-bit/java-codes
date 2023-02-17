@@ -1,0 +1,74 @@
+import java.util.*;
+
+class student {
+    String name;
+    int roll;
+    String dob;
+    void inputdata() {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println(">>>Input Student Data<<<");
+        System.out.print("Enter name: ");
+        name = sc.nextLine();
+        System.out.print("Enter roll no.: ");
+        roll = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Enter D.O.B: ");
+        dob = sc.next();
+        sc.nextLine();
+    }
+
+    void printdata() {
+        System.out.println("\n>>>Student details<<<\nName: " + name +
+                "\nRoll no.: " + roll + "\nDOB: " + dob);
+    }
+}
+
+class marks extends student {
+    float p, c, m, cts, e, tot, per;
+    char gd;
+    void readdata() {
+        super.inputdata();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\n>>> Input Marks <<<");
+        System.out.print("Physics: ");
+        p = sc.nextInt();
+        System.out.print("Chemistry: ");
+        c = sc.nextInt();
+        System.out.print("Maths: ");
+        m = sc.nextInt();
+        System.out.print("Computer Science: ");
+        cts = sc.nextInt();
+        System.out.print("English: ");
+        e = sc.nextInt();
+    }
+
+    void compute() {
+        tot = p + c + m + cts + e;
+        per = (tot / 500) * 100;
+
+        if (per >= 90)
+            gd = 'A';
+        else if (per >= 60)
+            gd = 'B';
+        else if (per >= 40)
+            gd = 'C';
+        else
+            gd = 'D';
+    }
+
+    void showdata() {
+        super.printdata();
+        System.out.println("---MARKS---\nMaths: "+m+"\nPhysics: "+p+"\nChemistry: "+c+
+                "\nComputer Science: "+cts+"\nEnglish"+e+"\nTotal: "+tot+"\nPercentage: "+per+"\nGrade: "+gd);
+    }
+}
+
+public class Studentdetails{
+    public static void main(String[] args){
+        marks ob = new marks();
+        ob.readdata();
+        ob.compute();
+        ob.showdata();
+    }
+}
